@@ -10,6 +10,8 @@ import * as ImagePicker from 'expo-image-picker';
 const PlaceholderImage = require('./assets/images/background-image.png')
 
 export default function App() {
+  const [showAppOptions, setShowAppOptions] = useState(false);
+
   const [selectedImage, setSelectedImage] = useState(null);
 
   const pickImageAsync = async () => {
@@ -20,6 +22,7 @@ export default function App() {
 
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri)
+      setShowAppOptions(true);
     } else {
       alert('You did not select any image.');
     }
